@@ -10,7 +10,7 @@ export default tseslint.config(
   { ignores: ['dist'] },
   {
     extends: [
-      js.configs.recommended, 
+      js.configs.recommended,
       // ...tseslint.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
       ...tseslint.configs.strictTypeChecked,
@@ -24,17 +24,27 @@ export default tseslint.config(
       globals: globals.browser,
       project: ['./tsconfig.node.json', './tsconfig.app.json'],
       tsconfigRootDir: import.meta.dirname,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      'react-dom': reactDom,
+      'react': react,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      ...reactDom.configs.recommended.rules,
+      ...react.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
+      "react-dom/no-dangerously-set-innerhtml": "warn",
     },
   },
 )
