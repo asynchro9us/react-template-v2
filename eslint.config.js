@@ -12,24 +12,15 @@ export default tseslint.config(
   {
     extends: [
       js.configs.recommended,
-      // ...tseslint.configs.recommended,
-      ...tseslint.configs.recommendedTypeChecked,
-      ...tseslint.configs.strictTypeChecked,
-      ...tseslint.configs.stylisticTypeChecked,
-      ...react.configs.recommended,
-      ...reactDom.configs.recommended,
+      ...tseslint.configs.recommended,
+      // ...tseslint.configs.recommendedTypeChecked,
+      // ...tseslint.configs.strictTypeChecked,
+      // ...tseslint.configs.stylisticTypeChecked,
     ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
     },
     plugins: {
       'react-hooks': reactHooks,
@@ -38,16 +29,22 @@ export default tseslint.config(
       react,
       prettier,
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
     rules: {
       ...reactHooks.configs.recommended.rules,
       ...reactDom.configs.recommended.rules,
       ...react.configs.recommended.rules,
-      ...prettier.configs.recommended.rules,
+      ...prettier.recommended,
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
       "react-dom/no-dangerously-set-innerhtml": "warn",
+      "react/react-in-jsx-scope": "off",
     },
   },
 )
