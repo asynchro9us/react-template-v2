@@ -6,7 +6,7 @@ import { SampleIcon } from '../../assets/icons';
 
 const Header: FC = () => {
   return (
-    <nav className="sticky top-0 w-full flex justify-center border-b border-gray-200">
+    <nav className="sticky top-0 w-full flex justify-center bg-white border-b border-gray-200">
       <Container className="max-w-[1024px] px-6">
         <ul className="flex items-center justify-center gap-6 py-1.5">
           <li>
