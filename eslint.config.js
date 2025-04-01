@@ -45,6 +45,7 @@ export default tseslint.config(
       ],
       "react-dom/no-dangerously-set-innerhtml": "warn",
       "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
     },
   },
 )
